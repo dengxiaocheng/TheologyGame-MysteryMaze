@@ -14,15 +14,25 @@ body {
     overflow: hidden;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     height: 100vh;
     font-family: 'Noto Serif SC', serif;
     color: #ccc;
+    touch-action: manipulation;
+    overscroll-behavior: none;
+    -webkit-overflow-scrolling: touch;
+    user-select: none;
+    -webkit-user-select: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
 }
 
 #gameCanvas {
-    border: 1px solid #222;
+    border: none;
     display: block;
+    width: 100vw;
+    image-rendering: pixelated;
 }
 
 /* Start Screen */
@@ -60,6 +70,8 @@ body {
     font-family: 'Noto Serif SC', serif;
     font-size: 1.1em;
     padding: 0.8em 2.5em;
+    min-height: 48px;
+    min-width: 48px;
     background: transparent;
     color: #d4c5a0;
     border: 1px solid #d4c5a0;
@@ -74,9 +86,86 @@ body {
     box-shadow: 0 0 20px rgba(212,197,160,0.2), inset 0 0 20px rgba(212,197,160,0.05);
 }
 
+#startScreen button:active {
+    background: rgba(212,197,160,0.15);
+}
+
 /* UI Overlays (hidden by default) */
 .dialogue-overlay,
 .reflection-overlay,
 .ending-overlay {
     display: none;
+}
+
+/* D-Pad */
+#dpad {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+#dpad.visible {
+    display: flex;
+}
+
+.dpad-row {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    justify-content: center;
+}
+
+.dpad-spacer {
+    width: 56px;
+    height: 56px;
+}
+
+.dpad-btn {
+    width: 56px;
+    height: 56px;
+    background: rgba(212,197,160,0.15);
+    border: 1px solid rgba(212,197,160,0.3);
+    border-radius: 8px;
+    color: #d4c5a0;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+
+.dpad-btn:active {
+    background: rgba(212,197,160,0.35);
+    border-color: rgba(212,197,160,0.6);
+}
+
+.dpad-action {
+    font-size: 16px;
+    font-weight: bold;
+    background: rgba(212,197,160,0.1);
+    border-color: rgba(212,197,160,0.2);
+}
+
+.dpad-action:active {
+    background: rgba(212,197,160,0.4);
+}
+
+.dpad-action.hidden {
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* Hide D-Pad on desktop */
+@media (hover: hover) and (pointer: fine) {
+    #dpad {
+        display: none !important;
+    }
 }

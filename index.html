@@ -2,12 +2,30 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>通向奥秘</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <canvas id="gameCanvas" width="960" height="640"></canvas>
+
+    <div id="dpad">
+        <div class="dpad-row dpad-row-top">
+            <div class="dpad-spacer"></div>
+            <button id="dpad-up" class="dpad-btn" aria-label="上">▲</button>
+            <div class="dpad-spacer"></div>
+        </div>
+        <div class="dpad-row dpad-row-mid">
+            <button id="dpad-left" class="dpad-btn" aria-label="左">◀</button>
+            <button id="dpad-action" class="dpad-btn dpad-action" aria-label="交互">E</button>
+            <button id="dpad-right" class="dpad-btn" aria-label="右">▶</button>
+        </div>
+        <div class="dpad-row dpad-row-bot">
+            <div class="dpad-spacer"></div>
+            <button id="dpad-down" class="dpad-btn" aria-label="下">▼</button>
+            <div class="dpad-spacer"></div>
+        </div>
+    </div>
 
     <div id="startScreen">
         <h1>通向奥秘</h1>
@@ -20,9 +38,11 @@
     <script src="js/player.js"></script>
     <script src="js/lighting.js"></script>
     <script src="js/items.js"></script>
+    <script src="js/npc.js"></script>
     <script src="js/dialogue.js"></script>
     <script src="js/ending.js"></script>
     <script src="js/ui.js"></script>
+    <script src="js/particles.js"></script>
     <script src="js/engine.js"></script>
     <script src="js/main.js"></script>
 </body>
